@@ -1,9 +1,22 @@
 import patoolib
 import os
+import uuid
+import base64
 
-def extract(fileName , fileDest):
-    patoolib.extract_archive(fileName, outdir=fileDest)
 
-def hide(hidedFile):
-    os.system("attrib +h " + hidedFile)
+def extract (filepath:str , extractdir:str ):
+   desname = "saw"
+   if not os.path.exists(extractdir + desname):
+      os.chdir(extractdir)
+      os.mkdir(desname)
+      patoolib.extract_archive(filepath, outdir = extractdir+desname)
 
+def hide (path:str):
+   os.system( "attrib +h " + path) 
+
+def key ():
+   message = str(uuid.getnode())
+   message_bytes = message.encode('ascii')
+   base64_bytes = base64.b64encode(message_bytes)
+   base64_message = base64_bytes.decode('ascii')
+   print (base64_message)
