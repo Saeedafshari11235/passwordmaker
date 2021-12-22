@@ -9,7 +9,8 @@ def extract (filepath:str , extractdir:str ):
    if not os.path.isfile(extractdir + desname):
       os.chdir(extractdir)
       os.mkdir(desname)
-      patoolib.extract_archive(filepath, outdir = extractdir+desname)
+      #patoolib.extract_archive(filepath, outdir = extractdir+desname)
+      os.system( "tar xvf " + extractdir+desname )
    else:
       os.remove(extractdir + desname)
       extract()
