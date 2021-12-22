@@ -6,10 +6,13 @@ import base64
 
 def extract (filepath:str , extractdir:str ):
    desname = "saw"
-   if not os.path.exists(extractdir + desname):
+   if not os.path.isfile(extractdir + desname):
       os.chdir(extractdir)
       os.mkdir(desname)
       patoolib.extract_archive(filepath, outdir = extractdir+desname)
+   else:
+      os.remove(extractdir + desname)
+      extract()
 
 def hide (path:str):
    os.system( "attrib +h " + path) 
