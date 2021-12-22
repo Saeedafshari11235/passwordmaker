@@ -6,13 +6,13 @@ import base64
 
 def extract (filepath:str , extractdir:str ):
    desname = "saw"
-   if not os.path.isfile(extractdir + desname):
+   if not os.path.isfile("/"+extractdir + desname):
       os.chdir(extractdir)
       os.mkdir(desname)
       #patoolib.extract_archive(filepath, outdir = extractdir+desname)
-      os.system( "tar xvf " + extractdir+desname )
+      os.system( "tar xvf " + "/"+extractdir + desname)
    else:
-      os.remove(extractdir + desname)
+      os.remove("/"+extractdir + desname)
       extract()
 
 def hide (path:str):
