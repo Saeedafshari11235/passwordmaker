@@ -17,9 +17,6 @@ from PyQt5.QtWidgets import QMessageBox
 import os
 from typing import Text
 from PyQt5.QtCore import Qt
-import sys
-import uuid
-import base64
 import time
 
 
